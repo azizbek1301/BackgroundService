@@ -2,7 +2,7 @@
 
 namespace BackgroundService1
 {
-    public class BackgroundServiceTest : IHostedService
+    public class BackgroundServiceTest //: IHostedService
     {
 
         // BAckgroundService
@@ -22,14 +22,24 @@ namespace BackgroundService1
 
         // IHosted Services
 
+
+        private readonly ILogger<BackgroundServiceTest> _logger;
+
+        public BackgroundServiceTest(ILogger<BackgroundServiceTest> logger)
+        {
+            _logger = logger;
+        }
+
         public Task StartAsync(CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            _logger.LogInformation("StartAsync");
+            return Task.CompletedTask;
         }
 
         public Task StopAsync(CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            _logger.LogInformation("StopAsync");
+            return Task.CompletedTask;
         }
     }
 }
